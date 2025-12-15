@@ -18,8 +18,6 @@ func main() {
 		_, err := fmt.Scan(&menuchoice)
 		if err != nil {
 			fmt.Println("❌ Choix impossible, réessayez.")
-			var discard string
-			fmt.Scanln(&discard)
 			time.Sleep(sleep)
 			continue
 		}
