@@ -55,8 +55,6 @@ func Kg2pounds(w http.ResponseWriter, r *http.Request) {
 		"Resultat2": "",
 		"Entree2":   "",
 		"Erreur2":   ""}
-	if r.Method == http.MethodPost {
-	}
 
 	if r.Method == http.MethodPost {
 		kilograms := r.FormValue("kilograms")
