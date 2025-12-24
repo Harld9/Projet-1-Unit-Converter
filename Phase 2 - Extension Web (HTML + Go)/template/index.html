@@ -14,17 +14,57 @@
         <a href="/" class="logo-link"></a>
         </div>
     </header>
-
+    <!--Menu Kilometres to Miles-->
     <div class="menu">
         <h2>Convertissez vos unités :</h2>
-        <form class="contactform" method="post" action="/contact">
+        <form class="contactform" method="post" action="/kilometers2miles">
             <h2>Convertir les Kilomètres en Miles</h2>
             <label>Combien de Kilomètres voulez vous convertir ?</label>
             <input type="text" name="kilometers" required>
             <button type="submit">Envoyer</button>
-        </form>
-    </div>
 
+            {{if ne .Erreur1 ""}}
+            <div class="erreur">{{.Erreur1}}</div>
+            {{end}}
+
+            {{if .Resultat1}}
+            <div class="resultat">{{.Entree1}} km équivaut à : {{.Resultat1}} miles </div>
+            {{end}}
+        </form>
+
+        <!--Menu Kilograms to Pounds-->
+        <div class="menu">
+            <form class="contactform" method="post" action="/kilograms2pounds">
+                <h2>Convertir les Kilogrammes en Pounds</h2>
+                <label>Combien de Kilogrammes voulez vous convertir ?</label>
+                <input type="text" name="kilograms" required>
+                <button type="submit">Envoyer</button>
+
+                {{if ne .Erreur2 ""}}
+                <div class="erreur">{{.Erreur2}}</div>
+                {{end}}
+
+                {{if .Resultat2}}
+                <div class="resultat">{{.Entree2}} kg équivaut à : {{.Resultat2}} pounds/lbs </div>
+                {{end}}
+            </form>
+        </div>
+        <!--Menu Celsius to Fahreneit-->
+        <div class="menu">
+            <form class="contactform" method="post" action="/celsiustofahrenheit">
+                <h2>Convertir les degrés Celsius en Fahreneit</h2>
+                <label>Combien de degrés Celsius voulez vous convertir ?</label>
+                <input type="text" name="degresc" required>
+                <button type="submit">Envoyer</button>
+
+                {{if ne .Erreur3 ""}}
+                <div class="erreur">{{.Erreur3}}</div>
+                {{end}}
+
+                {{if .Resultat3}}
+                <div class="resultat">{{.Entree3}} °C équivaut à : {{.Resultat3}} °F </div>
+                {{end}}
+            </form>
 
 </body>
 

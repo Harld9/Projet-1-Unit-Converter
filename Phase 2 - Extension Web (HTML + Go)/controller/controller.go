@@ -1,14 +1,11 @@
 package controller
 
 import (
+	"convert/logic"
 	"html/template"
 	"net/http"
+	"strconv"
 )
-
-type PageData struct {
-	Title   string
-	Message string
-}
 
 // renderTemplate est une fonction utilitaire pour afficher un template HTML avec des données dynamiques
 func renderTemplate(w http.ResponseWriter, filename string, data map[string]string) {
@@ -17,22 +14,85 @@ func renderTemplate(w http.ResponseWriter, filename string, data map[string]stri
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost { // Si le formulaire est soumis en POST
-		// Récupération des données du formulaire
-		kilometers := r.FormValue("kilometers") // Récupère le champ "name"
-
-		data := map[string]string{
-			"Title":   "Contact",
-			"Message": "Merci ", // Message personnalisé après soumission
+	data := map[string]interface{}{
+		"Resultat1": "",
+		"Entree1":   "",
+		"Erreur1":   "",
+		"Resultat2": "",
+		"Entree2":   "",
+		"Erreur2":   "",
+		"Resultat3": "",
+		"Entree3":   "",
+		"Erreur3":   "",
+	}
+	tmpl := template.Must(template.ParseFiles("template/index.html"))
+	tmpl.Execute(w, data)
+}
+func Km2miles(w http.ResponseWriter, r *http.Request) {
+	data := map[string]interface{}{
+		"Resultat1": "",
+		"Entree1":   "",
+		"Erreur1":   ""}
+	if r.Method == http.MethodPost {
+		kilometers := r.FormValue("kilometers")
+		km, err1 := strconv.ParseFloat(kilometers, 64)
+		if err1 != nil {
+			data["Erreur1"] = "Veuillez entrer un nombre valide"
+		} else if km == 0 || km < 0 {
+			data["Erreur1"] = "La valeur ne peut pas être 0 ou en dessous"
+		} else {
+			miles := logic.Kilometers2Miles(km)
+			data["Resultat1"] = miles
+			data["Entree1"] = km
 		}
-		renderTemplate(w, "contact.html", data)
-		return // On termine ici pour ne pas exécuter la partie GET
+	}
+	tmpl := template.Must(template.ParseFiles("template/index.html")) // ✅ Ajouter
+	tmpl.Execute(w, data)
+}
+
+func Kg2pounds(w http.ResponseWriter, r *http.Request) {
+	data := map[string]interface{}{
+		"Resultat2": "",
+		"Entree2":   "",
+		"Erreur2":   ""}
+	if r.Method == http.MethodPost {
 	}
 
-	// Si ce n'est pas un POST, on affiche simplement le formulaire
-	data := map[string]string{
-		"Title":   "Contact",
-		"Message": "Envoie-nous un message 📩",
+	if r.Method == http.MethodPost {
+		kilograms := r.FormValue("kilograms")
+		kg, err2 := strconv.ParseFloat(kilograms, 64)
+		if err2 != nil {
+			data["Erreur2"] = "Veuillez entrer un nombre valide"
+		} else if kg == 0 || kg < 0 {
+			data["Erreur2"] = "La valeur ne peut pas être 0 ou en dessous"
+		} else {
+			pounds := logic.Kilograms2pounds(kg)
+			data["Resultat2"] = pounds
+			data["Entree2"] = kg
+		}
 	}
-	renderTemplate(w, "contact.html", data)
+	tmpl := template.Must(template.ParseFiles("template/index.html")) // ✅ Ajouter
+	tmpl.Execute(w, data)
+}
+
+func Ctofahrenheit(w http.ResponseWriter, r *http.Request) {
+	data := map[string]interface{}{
+
+		"Resultat3": "",
+		"Entree3":   "",
+		"Erreur3":   ""}
+	if r.Method == http.MethodPost {
+		degresc := r.FormValue("degresc")
+		deg, err3 := strconv.ParseFloat(degresc, 64)
+		if err3 != nil {
+			data["Erreur3"] = "Veuillez entrer un nombre valide"
+		} else {
+			degresf := logic.Celsius2Fahreneit(deg)
+			data["Resultat3"] = degresf
+			data["Entree3"] = degresc
+		}
+	}
+	tmpl := template.Must(template.ParseFiles("template/index.html"))
+	tmpl.Execute(w, data)
+
 }

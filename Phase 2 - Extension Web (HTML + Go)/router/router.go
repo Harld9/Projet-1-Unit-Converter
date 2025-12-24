@@ -11,6 +11,9 @@ func New() *http.ServeMux {
 
 	// Routes de ton app
 	mux.HandleFunc("/", controller.Home)
+	mux.HandleFunc("/kilometers2miles", controller.Km2miles)
+	mux.HandleFunc("/kilograms2pounds", controller.Kg2pounds)
+	mux.HandleFunc("/celsiustofahrenheit", controller.Ctofahrenheit)
 
 	// Ajout des fichiers statiques
 	fileServer := http.FileServer(http.Dir("./static"))
