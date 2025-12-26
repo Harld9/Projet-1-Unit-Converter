@@ -1,26 +1,81 @@
-# Projet 1 Convertisseur d'unités
+# Projet 1 : Convertisseur d'unités
 
-Petit projet scolaire pour apprendre et revoir des notions de Go. C'est un convertisseur qui permet de passer des km en miles, des kg en livres et des degrés Celsius en Fahrenheit.
+Ce projet consiste en la création d'un outil de conversion multi-systèmes développé en Go. Il se divise en deux étapes : une interface en ligne de commande (CLI) et une extension web complète.
 
-## Phase 1 - Convertisseur d'unités dans le terminal
+---
 
-C'est un programme simple qu'on lance dans la console.
+## Phase 1 : Version Terminal (CLI)
 
-### Comment l'utiliser
+La première phase se concentre sur la logique métier et l'interaction via la console.
 
-1. On lance le programme.
-2. On choisit ce qu'on veut convertir dans le menu (1, 2 ou 3).
-3. On tape le nombre à convertir.
-4. Le résultat s'affiche.
+### Objectif
+Valider les concepts fondamentaux : structures de contrôle, fonctions, gestion des types numériques et validation des entrées utilisateur. L'accent est mis sur la fiabilité et la précision des calculs.
 
-Pour quitter, il suffit de taper 4 dans le menu.
+### Fonctionnalités
+* **Conversions disponibles** :
+    * Kilomètres (km) vers Miles (mi)
+    * Kilogrammes (kg) vers Livres (lb)
+    * Celsius (°C) vers Fahrenheit (°F)
+* **Gestion des erreurs** : Le programme vérifie la validité des saisies (ex: rejette le texte au lieu des nombres) sans crash.
+* **Persistance** : Boucle de contrôle permettant d'effectuer plusieurs calculs à la suite.
+* **Précision** : Utilisation de flottants haute précision sans arrondi arbitraire.
 
+### Installation et Lancement
+1. Accéder au répertoire :
+```bash
 cd "Phase 1 - Version Go (Terminal)"
+```
+2. Exécuter le programme :
+```bash
 go run main.go
+```
 
-Infos sur le code
-J'ai utilisé des boucles pour que le programme ne s'arrête pas tout seul.
-J'ai géré les erreurs (si on tape des lettres au lieu de chiffres).
-Les calculs sont précis, je n'ai pas arrondi les résultats.
+### Utilisation
+1. Sélectionner l'option dans le menu (1, 2 ou 3).
+2. Saisir la valeur numérique.
+3. Lire le résultat affiché.
+4. Choisir l'option 4 pour quitter.
 
-## Phase 2 - Convertisseur d'unités avec interface web
+---
+
+## Phase 2 : Extension Web (HTML + Go)
+
+Cette phase porte la logique de conversion vers une interface web interactive en introduisant l'architecture client-serveur.
+
+### Objectif
+Développer une interface graphique accessible via navigateur tout en séparant strictement la logique métier de la couche de présentation.
+
+### Fonctionnalités
+* **Interface unifiée** : Formulaires dédiés pour chaque conversion sur une page unique.
+* **Affichage dynamique** : Les résultats et erreurs sont générés dynamiquement.
+* **Architecture MVC** : Organisation du code en modules (`router`, `logic`, `controller`).
+* **Serveur HTTP** : Utilisation du package standard `net/http` de Go.
+
+### Installation et Lancement
+1. Accéder au répertoire :
+```bash
+cd "Phase 2 - Extension Web (HTML + Go)"
+```
+2. Démarrer le serveur :
+```bash
+go run main.go
+```
+3. Accéder à l'application :
+Ouvrir un navigateur à l'adresse : `http://localhost:8080`
+
+### Structure du Projet Web
+* **main.go** : Initialisation du serveur.
+* **controller/** : Traitement des requêtes HTTP.
+* **logic/** : Fonctions mathématiques réutilisables.
+* **router/** : Définition des routes URL.
+* **template/** : Fichiers HTML dynamiques.
+* **static/** : Feuilles de style CSS et assets.
+
+---
+
+## Annexes : Formules de conversion
+
+Le projet applique les standards de conversion suivants :
+* Distance : 1 km = 0.621371 miles
+* Masse : 1 kg = 2.20462 livres
+* Température : °F = (°C * 1.8) + 32

@@ -7,7 +7,8 @@ import (
 
 func main() {
 	var menuchoice float64
-	sleep := time.Duration(3) * time.Second
+	sleep := time.Duration(2) * time.Second
+	var videur string
 	for {
 		ClearScreen()
 		fmt.Println("Bonjour que voulez vous convertir aujourd'hui ?")
@@ -18,6 +19,7 @@ func main() {
 		_, err := fmt.Scan(&menuchoice)
 		if err != nil {
 			fmt.Println("❌ Choix impossible, réessayez.")
+			fmt.Scanln(&videur)
 			time.Sleep(sleep)
 			continue
 		}
@@ -32,6 +34,7 @@ func main() {
 				_, err := fmt.Scan(&menuchoice)
 				if err != nil {
 					fmt.Println("❌ Choix impossible, réessayez.")
+					fmt.Scanln(&videur)
 					time.Sleep(sleep)
 					continue
 				}
@@ -53,6 +56,7 @@ func main() {
 				_, err := fmt.Scan(&menuchoice)
 				if err != nil {
 					fmt.Println("❌ Choix impossible, réessayez.")
+					fmt.Scanln(&videur)
 					time.Sleep(sleep)
 					continue
 				}
@@ -74,6 +78,7 @@ func main() {
 				_, err := fmt.Scan(&menuchoice)
 				if err != nil {
 					fmt.Println("❌ Choix impossible, réessayez.")
+					fmt.Scanln(&videur)
 					time.Sleep(sleep)
 					continue
 				}
@@ -89,6 +94,7 @@ func main() {
 			return
 		default:
 			fmt.Println("❌ Choix impossible, réessayez.")
+			fmt.Scanln(&videur)
 			time.Sleep(sleep)
 		}
 	}
