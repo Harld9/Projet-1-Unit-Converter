@@ -10,43 +10,78 @@
 body {
     background-color: #24252a;
     min-height: 100vh;
+    padding-bottom: 50px;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    padding: 0px 2%;
-    justify-content: center;
+    padding: 20px;
+    text-align: center;
 }
 
 .logo {
     width: 250px;
-    margin-left: 50%;
-    margin-right: 50%;
     cursor: pointer;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px auto 0px;
-    max-width: 650px;
-    padding: 15px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.page-title {
+    color: white;
+    margin: 20px 0;
+    text-align: center;
 }
 
-.contactform {
-    border: none;
-    padding: 35px 50px;
+.convertisseur {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 35px 50px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    max-width: 650px;
-    margin: 30px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+}
+
+.convertisseur h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #24252a;
+}
+
+.convertisseur p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.convertisseur input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.convertisseur button {
+    width: 100%;
+    padding: 12px;
+    background-color: #24252a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.erreur {
+    color: red;
+    background-color: #ffebee;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.resultat {
+    color: green;
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 0.9rem;
 }

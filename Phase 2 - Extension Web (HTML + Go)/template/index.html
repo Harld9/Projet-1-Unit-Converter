@@ -4,67 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertisseur d'unités</title>
+    <title>Convertisseur d'unités by Harold</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 
 <body>
     <header>
-        <img class="logo" src="/static/logo.png" alt="logo">
-        <a href="/" class="logo-link"></a>
-        </div>
+        <a href="/"><img class="logo" src="/static/logo.png" alt="logo"></a>
     </header>
-    <!--Menu Kilometres to Miles-->
-    <div class="menu">
-        <h2>Convertissez vos unités :</h2>
-        <form class="contactform" method="post" action="/kilometers2miles">
-            <h2>Convertir les Kilomètres en Miles</h2>
-            <p>Combien de Kilomètres voulez vous convertir ?</p>
-            <input type="text" name="kilometers" required>
-            <button type="submit">Envoyer</button>
 
-            {{if ne .Erreur1 ""}}
-            <div class="erreur">{{.Erreur1}}</div>
-            {{end}}
+    <h2 class="page-title">Convertissez vos unités :</h2>
 
-            {{if .Resultat1}}
-            <div class="resultat">{{.Entree1}} km équivaut à : {{.Resultat1}} miles </div>
-            {{end}}
+    <div class="section-calc">
+        <form class="convertisseur" method="post" action="/kilometers2miles">
+            <h2>Kilomètres en Miles</h2>
+            <p>Combien de Kilomètres voulez-vous convertir ?</p>
+            <input type="text" name="kilometers" placeholder="Ex: 10" required>
+            <button type="submit">Convertir</button>
+
+            {{if ne .Erreur1 ""}}<div class="erreur">{{.Erreur1}}</div>{{end}}
+            {{if .Resultat1}}<div class="resultat">{{.Entree1}} km = {{.Resultat1}} miles</div>{{end}}
         </form>
+    </div>
 
-        <!--Menu Kilograms to Pounds-->
-        <div class="menu">
-            <form class="contactform" method="post" action="/kilograms2pounds">
-                <h2>Convertir les Kilogrammes en Pounds</h2>
-                <p>Combien de Kilogrammes voulez vous convertir ?</p>
-                <input type="text" name="kilograms" required>
-                <button type="submit">Envoyer</button>
+    <div class="section-calc">
+        <form class="convertisseur" method="post" action="/kilograms2pounds">
+            <h2>Kilogrammes en Pounds</h2>
+            <p>Combien de Kilogrammes voulez-vous convertir ?</p>
+            <input type="text" name="kilograms" placeholder="Ex: 5" required>
+            <button type="submit">Convertir</button>
 
-                {{if ne .Erreur2 ""}}
-                <div class="erreur">{{.Erreur2}}</div>
-                {{end}}
+            {{if ne .Erreur2 ""}}<div class="erreur">{{.Erreur2}}</div>{{end}}
+            {{if .Resultat2}}<div class="resultat">{{.Entree2}} kg = {{.Resultat2}} lbs</div>{{end}}
+        </form>
+    </div>
 
-                {{if .Resultat2}}
-                <div class="resultat">{{.Entree2}} kg équivaut à : {{.Resultat2}} pounds/lbs </div>
-                {{end}}
-            </form>
-        </div>
-        <!--Menu Celsius to Fahreneit-->
-        <div class="menu">
-            <form class="contactform" method="post" action="/celsiustofahrenheit">
-                <h2>Convertir les degrés Celsius en Fahreneit</h2>
-                <p>Combien de degrés Celsius voulez vous convertir ?</p>
-                <input type="text" name="degresc" required>
-                <button type="submit">Envoyer</button>
+    <div class="section-calc">
+        <form class="convertisseur" method="post" action="/celsiustofahrenheit">
+            <h2>Celsius en Fahrenheit</h2>
+            <p>Combien de degrés Celsius voulez-vous convertir ?</p>
+            <input type="text" name="degresc" placeholder="Ex: 20" required>
+            <button type="submit">Convertir</button>
 
-                {{if ne .Erreur3 ""}}
-                <div class="erreur">{{.Erreur3}}</div>
-                {{end}}
-
-                {{if .Resultat3}}
-                <div class="resultat">{{.Entree3}} °C équivaut à : {{.Resultat3}} °F </div>
-                {{end}}
-            </form>
+            {{if ne .Erreur3 ""}}<div class="erreur">{{.Erreur3}}</div>{{end}}
+            {{if .Resultat3}}<div class="resultat">{{.Entree3}} °C = {{.Resultat3}} °F</div>{{end}}
+        </form>
+    </div>
 
 </body>
 
