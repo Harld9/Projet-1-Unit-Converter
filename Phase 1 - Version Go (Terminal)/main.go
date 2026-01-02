@@ -7,6 +7,7 @@ import (
 
 func main() {
 	var menuchoice float64
+	var valeur float64
 	sleep := time.Duration(2) * time.Second
 	var videur string
 	for {
@@ -31,18 +32,18 @@ func main() {
 				fmt.Println("Rentrez le nombre de Kilomètres que vous voulez convertir en Miles:")
 				fmt.Println("0 : Pour revenir en arrière")
 
-				_, err := fmt.Scan(&menuchoice)
-				if err != nil {
+				_, errvaleur := fmt.Scan(&valeur)
+				if errvaleur != nil {
 					fmt.Println("❌ Choix impossible, réessayez.")
 					fmt.Scanln(&videur)
 					time.Sleep(sleep)
 					continue
 				}
 
-				if menuchoice == 0 {
+				if valeur == 0 {
 					break
 				} else {
-					fmt.Println(menuchoice, "km équivalent à :", Kilometers2Miles(menuchoice), "miles.") // j'au utilisé Println pour garder la précision des résultats mais si on veut des résultats arrondis il faut utiliser Printf
+					fmt.Println(valeur, "km équivalent à :", Kilometers2Miles(valeur), "miles.") // j'au utilisé Println pour garder la précision des résultats mais si on veut des résultats arrondis il faut utiliser Printf
 					time.Sleep(sleep)
 				}
 			}
@@ -53,18 +54,18 @@ func main() {
 				fmt.Println("Rentrez le nombre de Kilogrammes que vous voulez convertir en lbs/pounds:")
 				fmt.Println("0 : Pour revenir en arrière")
 
-				_, err := fmt.Scan(&menuchoice)
-				if err != nil {
+				_, errvaleur := fmt.Scan(&valeur)
+				if errvaleur != nil {
 					fmt.Println("❌ Choix impossible, réessayez.")
 					fmt.Scanln(&videur)
 					time.Sleep(sleep)
 					continue
 				}
 
-				if menuchoice == 0 {
+				if valeur == 0 {
 					break
 				} else {
-					fmt.Println(menuchoice, "kg équivalent à :", Kilograms2pounds(menuchoice), "lbs/pounds.")
+					fmt.Println(valeur, "kg équivalent à :", Kilograms2pounds(valeur), "lbs/pounds.")
 					time.Sleep(sleep)
 				}
 			}
@@ -75,18 +76,18 @@ func main() {
 				fmt.Println("Rentrez le nombre de degrés Celsius que vous voulez convertir en Fahreneit:")
 				fmt.Println("0 : Pour revenir en arrière")
 
-				_, err := fmt.Scan(&menuchoice)
-				if err != nil {
+				_, errvaleur := fmt.Scan(&valeur)
+				if errvaleur != nil {
 					fmt.Println("❌ Choix impossible, réessayez.")
 					fmt.Scanln(&videur)
 					time.Sleep(sleep)
 					continue
 				}
 
-				if menuchoice == 0 {
+				if valeur == 0 {
 					break
 				} else {
-					fmt.Println(menuchoice, "°C équivalent à :", Celsius2Fahreneit(menuchoice), "degrés Fahrenheit.")
+					fmt.Println(valeur, "°C équivalent à :", Celsius2Fahreneit(valeur), "degrés Fahrenheit.")
 					time.Sleep(sleep)
 				}
 			}
